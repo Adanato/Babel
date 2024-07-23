@@ -1,0 +1,90 @@
+h1 {
+    background-color: #60afce; /* Solid color background */
+    color: white;             /* Text color */
+    padding: 20px;            /* Padding inside the h1 element */
+    text-align: center;       /* Center align the text */
+    border-radius: 8px;       /* Rounded corners */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
+    font-size: 2.5em;         /* Font size of the h1 element */
+    font-family: 'Arial', sans-serif; /* Font family */
+    /* background-color: #4CAF50;
+
+    margin-top: 20px;
+    text-align: center;
+    margin-bottom: 20px; */
+}
+
+
+span {
+    font-weight: bold;
+}
+
+
+body {
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/*Text next to the destination dropdown*/
+.text-next-to-dropdown {
+    /* display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px; */
+    margin-right: 10px;
+}
+
+/*Dropdown Button for Destinations*/
+.dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    margin-left: 20px;
+    
+    align-items: center;
+    justify-content: center;
+    
+}
+
+/*Dropdown Button for Destinations on hover & focus*/
+.dropbtn:hover, .dropbtn:focus {
+    background-color: #3e8e41;
+}
+/*the container <div> - needed to position the dropdown content*/
+.destination_dropdown {
+    position: relative;
+    display: inline-block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} 
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/*Links inside the dropdown*/
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/*Change color of dropdown links on hover*/
+.destination_dropdown a:hover {background-color: #f1f1f1}
+
+/*Show the dropdown menu onclick (going to need a func for this*/
+.show {display:block;}
+
