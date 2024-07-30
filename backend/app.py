@@ -1,8 +1,18 @@
-from flask import Flask, request, jsonify
+from flask import Flask, jsonify, request
+import openai
+from dotenv import load_dotenv
+import os
+import random
 
+# Load environment variables from .env file
+load_dotenv()
+openai.api_key = os.getenv("OPENAI_API_KEY")
+
+#Custom code imports
+from suggestions import get_trip_idea, locations
+from generation import get_location_generation
 app = Flask(__name__)
 
-# Hardcoded destination data
 destinations = [
     {
         "name": "Paris",
@@ -24,9 +34,19 @@ destinations = [
     }
 ]
 
-    
 @app.route('/api/generate', methods=['GET'])
 def get_destinations():
+    # Get the 'destination' and 'days' parameters from the URL
+    destination = request.args.get('destination', default='a beach', type=str)
+    days = request.args.get('days', default=7, type=int)
+    
+    # Define the prompt for the OpenAI API
+    prompt = f"Suggest three activities for a {days}-day vacation in {destination}."
+    
+    # Get the location suggestions
+    destinations = get_location_generation(prompt)
+    
+    # Return the suggestions as a JSON response
     return jsonify(destinations)
 
 @app.route('/api/generate', methods=['POST'])
@@ -37,7 +57,22 @@ def add_destination():
 
 @app.route('/api/suggestions', methods=['GET'])
 def get_destinations():
-    return jsonify(destinations)
+    # Randomly select a continent
+    continent = random.choice(list(locations.keys()))
+    # Randomly select a country from the selected continent
+    country = random.choice(locations[continent])
+    
+    # Get a trip idea for the selected country
+    trip_idea = get_trip_idea(country)
+    
+    # Prepare the suggestion response
+    suggestion = {
+        "continent": continent,
+        "country": country,
+        "trip_idea": trip_idea
+    }
+
+    return jsonify(suggestion)
 
 if __name__ == '__main__':
     app.run(debug=True)
