@@ -1,47 +1,33 @@
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, jsonify, request
+import openai
+from dotenv import load_dotenv
+import os
 
+# Load environment variables from .env file
+load_dotenv()
+openai.api_key = os.getenv("OPENAI_API_KEY")
+
+#Custom code imports
+from generation import get_location_generation
 app = Flask(__name__)
 
-# Hardcoded destination data
-destinations = [
-    {
-        "name": "Paris",
-        "country": "France",
-        "attractions": ["Eiffel Tower", "Louvre Museum", "Notre-Dame Cathedral"],
-        "recommended_days": 4
-    },
-    {
-        "name": "Tokyo",
-        "country": "Japan",
-        "attractions": ["Tokyo Skytree", "Senso-ji Temple", "Shibuya Crossing"],
-        "recommended_days": 5
-    },
-    {
-        "name": "New York City",
-        "country": "United States",
-        "attractions": ["Statue of Liberty", "Central Park", "Times Square"],
-        "recommended_days": 5
-    }
-]
 
-    
+
 @app.route('/api/generate', methods=['GET'])
 def get_destinations():
+    # Get the 'destination' and 'days' parameters from the URL
+    destination = request.args.get('destination', default='a beach', type=str)
+    days = request.args.get('days', default=7, type=int)
+    
+    # Define the prompt for the OpenAI API
+    prompt = f"Suggest three activities for a {days}-day vacation in {destination}."
+    
+    # Get the location suggestions
+    destinations = get_location_generation(prompt)
+    
+    # Return the suggestions as a JSON response
     return jsonify(destinations)
 
-@app.route('/api/generate', methods=['POST'])
-def add_destination():
-    new_destination = request.json
-
-    return jsonify(new_destination), 201
-
-@app.route('/api/suggestions', methods=['GET'])
-def get_destinations():
-    return jsonify(destinations)
-
-app.route("/home", methods=["GET"])
-def home():
-    return render_template("home.html", subtitle="Home", text="Welcome to the home page!")
 
 if __name__ == '__main__':
     app.run(debug=True)
