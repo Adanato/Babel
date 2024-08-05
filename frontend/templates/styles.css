@@ -53,13 +53,18 @@ body {
 
 /*Dropdown Button for Destinations*/
 .dropbtn {
-    background-color: #4CAF50;
-    color: white;
+    background-color: white;
+    color: black;
     padding: 16px;
     font-size: 16px;
     border: none;
     cursor: pointer;
     margin-left: 20px;
+    border: 1px solid black;
+
+
+    height: 30px;
+    width: 200px;
     
     align-items: center;
     justify-content: center;
@@ -68,7 +73,7 @@ body {
 
 /*Dropdown Button for Destinations on hover & focus*/
 .dropbtn:hover, .dropbtn:focus {
-    background-color: #3e8e41;
+    background-color: #182a19;
 }
 /*the container <div> - needed to position the dropdown content*/
 .destination_dropdown {
@@ -110,16 +115,16 @@ body {
     padding-bottom: 30px;
 }
 
-
 /*Styling for the destination suggestion*/
 /* Since I am going to have images in suggestion, how will resizing the page affect the images? */
 .suggestions_container{
     width: 100%;
-    background-color: blanchedalmond;
+    /* background-color: blanchedalmond; */
     overflow-y: auto;
 
 }
 .suggestions_container h2 {
+    padding-left: 10px;
     text-align: left;
     margin-bottom: 20px;
 }
@@ -127,10 +132,11 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 200px;
+    height: 300px;
 }
 .suggest_button {
-    background-color: green;
+    background-color: #deedee;
+    height: 200px;
     margin: 10px;
     padding: 10px;
     border: 1px solid #ccc;

@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 
 app = Flask(__name__)
 
@@ -38,6 +38,10 @@ def add_destination():
 @app.route('/api/suggestions', methods=['GET'])
 def get_destinations():
     return jsonify(destinations)
+
+app.route("/home", methods=["GET"])
+def home():
+    return render_template("home.html", subtitle="Home", text="Welcome to the home page!")
 
 if __name__ == '__main__':
     app.run(debug=True)

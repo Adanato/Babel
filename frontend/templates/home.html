@@ -1,19 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>My Website</title>
+    <title>Magic Travels</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet"> <!-- Google Fonts link -->
 
 </head>
 <body>
     <h1>Magic Travels</h1>
+
     <div class="container">
         <div class="destination_dropdown">
             <span class="text-next-to-button"> Choose a Destination: </span>
-            <button onclick="myFunction()" class="dropbtn">Destinations</button>
+            <select id="destination_select">
+                <span class="text-next-to-button"> Choose a Destination: </span>
+<!--Choices of destinations will come from an API-->
+                <option value="1">Select</option>
+                <option value="2">Barcelona, Spain</option>
+                <option value="3">London, England</option>
+                <option value="4">Tokyo, Japan</option>
+                <option value="5">Berlin, Germany</option>
+            </select>
+            <!-- <button onclick="myFunction()" class="dropbtn">Destinations</button> -->
             <div id="my_dest_dropdown" class="dropdown-content">
-                <!-- This is where we'd have to connect it to the API and get cities from it -->
+<!-- This is where we'd have to connect it to the API and get cities from it -->
                 <a href="#">Paris</a>
                 <a href="#">London</a>
                 <a href="#">New York</a>
@@ -21,7 +31,7 @@
             </div>
         </div>
         <div class="duration_counter">
-            <span class="text-next-to-duration"> Choose Duration: </span>
+            <span class="text-next-to-duration"> Choose Duration:</span>
             <select id="duration_select">
                 <option value="1">1 day</option>
                 <option value="2">2 days</option>
@@ -32,22 +42,26 @@
         </div>
     </div>
     <div class="generate_button">
+<!-- After clicking the generate button, it should take user to the generate -->
+<!-- page showing the results based on their paramters (City and Duration)  -->
         <button onclick="generateItinerary()">Generate Itinerary</button>
     </div>
     <div class="suggestions_container">
         <h2>Recommanded Destinations</h2>
+        <h3>Duration dropdown here</h3>
             <div class="buttons_row">
+                <!-- Suggestions should change everytime the page is refreshed -->
                 <div class="suggest_button">
-                    <h2>Image1</h2>
-                    <p>Destination place</p>
+                    <img src="../photos/barcelona.jpg" alt="Barcelona" style="width:220px;height:150px"; > 
+                    <h2>Barcelona, Spain</h2>
                 </div>
                 <div class="suggest_button">
-                    <h2>Image2</h2>
-                    <p>Destination place</p>
+                    <img src="../photos/london.jpg" alt="Paris" style="width:220px;height:150px"; >
+                    <h2>London, England</h2>
                 </div>
                 <div class="suggest_button">
-                    <h2>Image3</h2>
-                    <p>Some text</p>
+                    <img src="../photos/tokyo.jpg" alt="Tokyo" style="width:220px;height:150px"; >  
+                    <h2>Tokyo, Japan</h2>
                 </div>
             </div>
     </div>
