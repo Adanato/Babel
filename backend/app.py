@@ -13,7 +13,7 @@ def get_destinations():
     days = request.args.get('days', default=7, type=int)
     
     # Define the prompt for the OpenAI API
-    prompt = f"Suggest three activities for a {days}-day vacation in {destination}."
+    prompt = f"Suggest {days} activities for a {days}-day vacation in {destination}. "
     
     # Get the location suggestions
     destinations = get_location_generation(prompt)
