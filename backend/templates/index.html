@@ -2,7 +2,8 @@
 <html>
 <head>
     <title>Magic Travels</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <!-- <link rel="stylesheet" type="text/css" href="templates/styles.css"> -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet"> <!-- Google Fonts link -->
 
 </head>
@@ -52,15 +53,16 @@
             <div class="buttons_row">
                 <!-- Suggestions should change everytime the page is refreshed -->
                 <div class="suggest_button">
-                    <img src="../photos/barcelona.jpg" alt="Barcelona" style="width:220px;height:150px"; > 
+                    <!-- <img src="./photos/barcelona.jpg" alt="Barcelona" style="width:220px;height:150px"; > -->
+                    <script src="{{ url_for('static', filename='home.js') }}" defer></script> 
                     <h2>Barcelona, Spain</h2>
                 </div>
                 <div class="suggest_button">
-                    <img src="../photos/london.jpg" alt="Paris" style="width:220px;height:150px"; >
+                    <img src="./photos/london.jpg" alt="Paris" style="width:220px;height:150px"; >
                     <h2>London, England</h2>
                 </div>
                 <div class="suggest_button">
-                    <img src="../photos/tokyo.jpg" alt="Tokyo" style="width:220px;height:150px"; >  
+                    <img src="./photos/tokyo.jpg" alt="Tokyo" style="width:220px;height:150px"; >  
                     <h2>Tokyo, Japan</h2>
                 </div>
             </div>

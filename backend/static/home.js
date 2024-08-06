@@ -3,7 +3,6 @@
 // This list should get moved somewhere else in the future, but for now it's fine here
 // const apiKey = process.env.GOOGLE_PLACES_KEY
 const apiKey = "AIzaSyAR_HQHRhazRxBTKcab27NeXmatm01q2XQ";
-const placeName = "Cancun, Mexico";
 
 const vacationDestinations = [
     "Paris, France",
@@ -70,6 +69,9 @@ function suggestDestinations() {
     return randomDestination;
 }
 
+const suggestedDestination = suggestDestinations();
+const placeName = suggestedDestination;
+
 // Function to reload the webpage
 // function reloadPage() {
 //     // Call the suggestDestinations function
@@ -83,12 +85,12 @@ function suggestDestinations() {
 // Call the reloadPage function when the webpage loads
 // window.onload = reloadPage;
 // Example usage
-const suggestedDestination = suggestDestinations();
 console.log("Suggested Destination:", suggestedDestination);
 
 // Function to get place details and photo refernce from Google Places API
 async function getPlacePhoto() {
     const findPlaceUrl = `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=${encodeURIComponent(placeName)}&inputtype=textquery&fields=photos&key=${apiKey}`;
+    console.log("findPlaceUrl:", findPlaceUrl);
 
     try {
         const response = await fetch(findPlaceUrl);

@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, render_template
 
 
 
@@ -20,6 +20,13 @@ def get_destinations():
     
     # Return the suggestions as a JSON response
     return jsonify(destinations)
+@app.route('/generate')
+def generate():
+    return render_template('generate.html')
+
+@app.route('/index')
+def index():
+    return render_template('index.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

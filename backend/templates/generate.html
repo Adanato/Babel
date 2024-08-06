@@ -2,7 +2,8 @@
 <html>
     <head>
         <title>My Website</title>
-        <link rel="stylesheet" type="text/css" href="generate.css">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='generate.css') }}">
+
 
     </head>
     <body>
@@ -17,6 +18,6 @@
         <p>List of dining options. 2 for each day</p>
         <p>each dining option includes name of restaurant and description of the place</p>
         <div id="photo-container">
-            <script src="home.js"></script>
+            <script src="{{ url_for('static', filename='home.js') }}"></script>
     </body>
 </html>
