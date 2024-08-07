@@ -18,12 +18,13 @@
             const params = getUrlParams();
             const destination = params.destination || "example_destination";  // Use URL parameter or default
             const days = params.days || 7;  // Use URL parameter or default
+            document.getElementById('place-name').textContent = destination;
+            document.getElementById('duration-of-trip').textContent = `Duration of trip: ${days} days`;
 
             fetch(`/api/generate?destination=${destination}&days=${days}`)
                 .then(response => response.json())
                 .then(data => {
-                    document.getElementById('place-name').textContent = destination;
-                    document.getElementById('duration-of-trip').textContent = `Duration of trip: ${data.duration_of_trip} days`;
+                    
                     
                     const accommodation = data.accommodation;
                     document.getElementById('accommodation').innerHTML = `
