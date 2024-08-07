@@ -50,7 +50,6 @@ def get_activities(destination, days):
     ],
     model="gpt-4-turbo",
 )
-    )
     return json.loads(response['choices'][0]['message']['content'])
 
 def get_dining_options(destination, days):
