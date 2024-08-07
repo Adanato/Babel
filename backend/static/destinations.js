@@ -50,3 +50,16 @@ export const vacationDestinations = [
     "Reykjavik, Iceland",
     "Hanoi, Vietnam"
 ];
+
+//Function to create option elements for the select element
+function populateSelectOptions() {
+    const selectElement = document.getElementById("destination_select");
+    vacationDestinations.forEach(destination => {
+        const option = document.createElement("option");
+        option.value = destination;
+        option.textContent = destination;
+        selectElement.appendChild(option);
+    });
+}
+
+window.onload = populateSelectOptions;
