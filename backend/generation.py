@@ -53,7 +53,7 @@ def get_activities(destination, days):
     return json.loads(response['choices'][0]['message']['content'])
 
 def get_dining_options(destination, days):
-    prompt = f"Provide a list of dining options for a {days}-day vacation in {destination} in JSON format. Each day should have one dining option with 'name' and 'description'."
+    prompt = f"Provide a list of dining options for a {days}-day vacation in {destination} in JSON format. Each day should have two dining option with 'name' and 'description'."
     response = client.chat.completions.create(
     messages=[
         {
