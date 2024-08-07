@@ -136,9 +136,14 @@ body {
 }
 .suggest_button {
     background-color: #deedee;
-    height: 200px;
-    margin: 10px;
+    height: 300px;
+    margin: 20px; /* changed */
     padding: 10px;
     border: 1px solid #ccc;
     flex: 1;
+}
+.photo-container {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
 }
