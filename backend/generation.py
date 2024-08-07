@@ -11,19 +11,6 @@ client = OpenAI(
     api_key=os.environ.get("OPENAI_API_KEY"),
 )
 
-def get_location_generation(prompt):
-    chat_completion = client.chat.completions.create(
-    messages=[
-        {
-            "role": "user",
-            "content": prompt,
-        }
-    ],
-    model="gpt-4-turbo",
-)
-
-    
-    return chat_completion
 
 
 def get_accommodation(destination, days):
@@ -35,9 +22,12 @@ def get_accommodation(destination, days):
             "content": prompt,
         }
     ],
-    model="gpt-4-turbo",
-)
-    return json.loads(response['choices'][0]['message']['content'])
+    model="gpt-4o",
+)   
+
+    clean_json_string = response.choices[0].message.content.strip("```json").strip("```")
+    print(clean_json_string)
+    return json.load(clean_json_string)
 
 def get_activities(destination, days):
     prompt = f"Provide a list of activities for a {days}-day vacation in {destination} in JSON format. Each day should have two activities with 'title' and 'description'."
@@ -48,19 +38,18 @@ def get_activities(destination, days):
             "content": prompt,
         }
     ],
-    model="gpt-4-turbo",
-)
-    return json.loads(response['choices'][0]['message']['content'])
+    model="gpt-4o",
+)   
+    clean_json_string = response.choices[0].message.content.strip("```json").strip("```")
+    return json.load(clean_json_string)
 
 def get_dining_options(destination, days):
     prompt = f"Provide a list of dining options for a {days}-day vacation in {destination} in JSON format. Each day should have two dining option with 'name' and 'description'."
     response = client.chat.completions.create(
+    model="gpt-4o",
     messages=[
-        {
-            "role": "user",
-            "content": prompt,
-        }
-    ],
-    model="gpt-4-turbo",
-)
-    return json.loads(response['choices'][0]['message']['content'])
+        {"role": "user", "content":prompt},
+    ]
+)   
+    clean_json_string = response.choices[0].message.content.strip("```json").strip("```")
+    return json.load(clean_json_string)

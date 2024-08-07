@@ -1,24 +1,72 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>My Website</title>
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='generate.css') }}">
+<head>
+    <title>Magic Travels</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='generate.css') }}">
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+            // Function to get URL parameters
+            function getUrlParams() {
+                const params = {};
+                window.location.search.substring(1).split("&").forEach(function(pair) {
+                    const [key, value] = pair.split("=");
+                    params[decodeURIComponent(key)] = decodeURIComponent(value);
+                });
+                return params;
+            }
 
+            const params = getUrlParams();
+            const destination = params.destination || "example_destination";  // Use URL parameter or default
+            const days = params.days || 7;  // Use URL parameter or default
 
-    </head>
-    <body>
-        <h1>Itinerary for [place name]</h1>
-        <h2>Duration of trip: [# of days] </h2>
-        <h2>Accommodation</h2>
+            fetch(`/api/generate?destination=${destination}&days=${days}`)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('place-name').textContent = destination;
+                    document.getElementById('duration-of-trip').textContent = `Duration of trip: ${data.duration_of_trip} days`;
+                    
+                    const accommodation = data.accommodation;
+                    document.getElementById('accommodation').innerHTML = `
+                        <h3>${accommodation.name}</h3>
+                        <p>${accommodation.address}</p>
+                        <p>${accommodation.description}</p>
+                    `;
+
+                    const activities = data.activities.map((activity, index) => `
+                        <h4>Day ${Math.floor(index / 2) + 1}, Activity ${index % 2 + 1}</h4>
+                        <p>${activity.title}: ${activity.description}</p>
+                    `).join('');
+                    document.getElementById('activities').innerHTML = activities;
+
+                    const diningOptions = data.dining_options.map((option, index) => `
+                        <h4>Day ${index + 1}</h4>
+                        <p>${option.name}: ${option.description}</p>
+                    `).join('');
+                    document.getElementById('dining-options').innerHTML = diningOptions;
+                })
+                .catch(error => console.error('Error:', error));
+        });
+    </script>
+</head>
+<body>
+    <h1 id="place-name">Itinerary for [place name]</h1>
+    <h2 id="duration-of-trip">Duration of trip: [# of days] </h2>
+    <h2>Accommodation</h2>
+    <div id="accommodation">
         <p>Accommodation details (address and area description)</p>
-        <h2>Activities</h2>
-        <p>List of activites. 2 for each day</p>
-        <p>each activity includes title of activity and small description</p>
-        <h2>Dining Options</h2>
-        <p>List of dining options. 2 for each day</p>
-        <p>each dining option includes name of restaurant and description of the place</p>
-        <div id="photo-container">
-            <script type="module" src="{{ url_for('static', filename='home.js') }}"></script>
-        </div>
-    </body>
+    </div>
+    <h2>Activities</h2>
+    <div id="activities">
+        <p>List of activities. 2 for each day</p>
+        <p>Each activity includes title of activity and small description</p>
+    </div>
+    <h2>Dining Options</h2>
+    <div id="dining-options">
+        <p>List of dining options. 1 for each day</p>
+        <p>Each dining option includes name of restaurant and description of the place</p>
+    </div>
+    <div id="photo-container">
+        <script type="module" src="{{ url_for('static', filename='home.js') }}"></script>
+    </div>
+</body>
 </html>
