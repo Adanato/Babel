@@ -1,9 +1,8 @@
 from flask import Flask, jsonify, request, render_template
 
+# Custom code imports
+from generation import get_accommodation, get_activities, get_dining_options
 
-
-#Custom code imports
-from generation import get_location_generation
 app = Flask(__name__)
 
 @app.route('/api/generate', methods=['GET'])
@@ -11,20 +10,29 @@ def get_destinations():
     # Get the 'destination' and 'days' parameters from the URL
     destination = request.args.get('destination', default='a beach', type=str)
     days = request.args.get('days', default=7, type=int)
-    
-    # Define the prompt for the OpenAI API
-    prompt = f"Suggest {days} activities for a {days}-day vacation in {destination}. "
-    
+
     # Get the location suggestions
-    destinations = get_location_generation(prompt)
+    accommodation = get_accommodation(destination, days)
+    activities = get_activities(destination, days)
+    dining_options = get_dining_options(destination, days)
     
-    # Return the suggestions as a JSON response
-    return jsonify(destinations)
+    # Process the location data to fit the required JSON structure
+    itinerary = {
+        "place_name": destination,
+        "duration_of_trip": days,
+        "accommodation": accommodation,
+        "activities": activities,
+        "dining_options": dining_options
+    }
+    
+    # Return the structured itinerary as a JSON response
+    return jsonify(itinerary)
+
 @app.route('/generate')
 def generate():
     return render_template('generate.html')
 
-@app.route('/index')
+@app.route('/')
 def index():
     return render_template('index.html')
 
