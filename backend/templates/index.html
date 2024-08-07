@@ -5,7 +5,8 @@
     <!-- <link rel="stylesheet" type="text/css" href="templates/styles.css"> -->
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet"> <!-- Google Fonts link -->
-    <script type="module" src="{{ url_for('static', filename='home.js') }}" defer></script> 
+    <script type="module" src="{{ url_for('static', filename='getsPhotos.js') }}" defer></script>
+    <script type="module" src="{{ url_for('static', filename='destinations.js') }}" defer></script>
 
 
 </head>
@@ -16,17 +17,11 @@
         <div class="destination_dropdown">
             <span class="text-next-to-button"> Choose a Destination: </span>
             <select id="destination_select">
-                <span class="text-next-to-button"> Choose a Destination: </span>
-<!--Choices of destinations will come from an API-->
-                <option value="1">Select</option>
-                <option value="2">Barcelona, Spain</option>
-                <option value="3">London, England</option>
-                <option value="4">Tokyo, Japan</option>
-                <option value="5">Berlin, Germany</option>
+                <!-- Options wll be populated by Javascript-->
             </select>
             <!-- <button onclick="myFunction()" class="dropbtn">Destinations</button> -->
             <div id="my_dest_dropdown" class="dropdown-content">
-<!-- This is where we'd have to connect it to the API and get cities from it -->
+                <!-- This is where we'd have to connect it to the API and get cities from it -->
                 <a href="#">Paris</a>
                 <a href="#">London</a>
                 <a href="#">New York</a>
@@ -35,7 +30,7 @@
         </div>
         <div class="duration_counter">
             <span class="text-next-to-duration"> Choose Duration:</span>
-            <select id="duration_select">
+            <select id="duration_select" onchange="generateInfo();">
                 <option value="1">1 day</option>
                 <option value="2">2 days</option>
                 <option value="3">3 days</option>
@@ -45,8 +40,8 @@
         </div>
     </div>
     <div class="generate_button">
-<!-- After clicking the generate button, it should take user to the generate -->
-<!-- page showing the results based on their paramters (City and Duration)  -->
+        <!-- After clicking the generate button, it should take user to the generate -->
+        <!-- page showing the results based on their paramters (City and Duration)  -->
         <button onclick="generateItinerary()">Generate Itinerary</button>
     </div>
     <div class="suggestions_container">

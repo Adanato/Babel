@@ -120,7 +120,7 @@ body {
 .suggestions_container{
     width: 100%;
     /* background-color: blanchedalmond; */
-    overflow-y: auto;
+    /* overflow-y: auto; */
 
 }
 .suggestions_container h2 {
