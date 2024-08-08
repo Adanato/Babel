@@ -1,24 +1,20 @@
 #duration-of-trip {
     text-align: center;
 }
-h1 {
-    text-align: center;
-}
-h2 {
+
+h1, h2 {
     font-family: 'Arial', sans-serif; /* Choose a font family */
-     /* Adjust the size as needed */
-    color: #333; /* Set the text color */
-    text-align: left; /* Center align the text */
-    background-color: #FBEAEB; /* Light background color */
-    padding: 10px 20px; /* Add padding for spacing */
+    color: white; /* Set the text color */
+    text-align: center; /* Center align the text */
+    background-color: #2F3C7E; /* Background color to match containers */
+    padding: 15px 25px; /* Add padding for spacing */
     border-radius: 8px; /* Rounded corners */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
     margin-top: 20px; /* Space above the header */
     margin-bottom: 20px; /* Space below the header */
-    display: flex;
 }
 
-.intinerary-container{
+.intinerary-container {
     display: flex;
     justify-content: space-between;
     gap: 20px;
@@ -29,17 +25,16 @@ h2 {
 .activities-container,
 .dining-container {
     font-family: 'Arial', sans-serif; /* Choose a font family */
-    /* Adjust the size as needed */
-   color: white; /* Set the text color */
-   text-align: left; /* Center align the text */
-   background-color: #2F3C7E; /* Light background color */
-   padding: 10px 20px; /* Add padding for spacing */
-   border-radius: 8px; /* Rounded corners */
-   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-   margin-top: 20px; /* Space above the header */
-   margin-bottom: 20px; /* Space below the header */
-   display: inline-block;
-   flex: 1;
+    color: white; /* Set the text color */
+    text-align: left; /* Align the text to the left */
+    background-color: #2F3C7E; /* Background color */
+    padding: 10px 20px; /* Add padding for spacing */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    margin-top: 20px; /* Space above the container */
+    margin-bottom: 20px; /* Space below the container */
+    display: inline-block;
+    flex: 1;
 }
 
 /* Styling for intinerary list header and icons */
@@ -56,7 +51,7 @@ h2 {
     margin: 0; /* Remove default margin to align better */
 }
 
-/* styling for main header and home icone */
+/* Styling for main header and home icon */
 .mainHeader-image-container {
     display: flex;
     justify-content: space-between; /* Space between the text and image */
@@ -80,5 +75,3 @@ h2 {
     right: 0; /* Align the image to the right */
     top: -5px; /* Align the image to the top */
 }
-
-

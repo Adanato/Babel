@@ -8,8 +8,12 @@ app = Flask(__name__)
 @app.route('/api/generate', methods=['GET'])
 def get_destinations():
     # Get the 'destination' and 'days' parameters from the URL
-    destination = request.args.get('destination', default='a beach', type=str)
-    days = request.args.get('days', default=7, type=int)
+    destination = request.args.get('destination')
+    days = request.args.get('days', type=int)
+    
+    # Check if the parameters are provided
+    if not destination or not days:
+        return jsonify({"error": "Missing required parameters: 'destination' and/or 'days'"}), 400
 
     # Get the location suggestions
     accommodation = get_accommodation(destination, days)

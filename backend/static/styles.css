@@ -51,38 +51,48 @@ body {
     margin-right: 10px;
 }
 
-/*Dropdown Button for Destinations*/
+.container {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.destination_dropdown, .duration_counter {
+    display: inline-block;
+}
+
+.text-next-to-dropdown {
+    margin-right: 10px;
+}
+
 .dropbtn {
     background-color: white;
     color: black;
     padding: 16px;
     font-size: 16px;
-    border: none;
+    border: 1px solid black;
     cursor: pointer;
     margin-left: 20px;
-    border: 1px solid black;
-
-
     height: 30px;
     width: 200px;
-    
-    align-items: center;
-    justify-content: center;
-    
-}
-
-/*Dropdown Button for Destinations on hover & focus*/
-.dropbtn:hover, .dropbtn:focus {
-    background-color: #182a19;
-}
-/*the container <div> - needed to position the dropdown content*/
-.destination_dropdown {
-    position: relative;
-    display: inline-block;
     display: flex;
     align-items: center;
     justify-content: center;
-} 
+}
+
+.dropbtn:hover, .dropbtn:focus {
+    background-color: #182a19;
+}
+
+.destination_dropdown {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .dropdown-content {
     display: none;
     position: absolute;
@@ -92,7 +102,6 @@ body {
     z-index: 1;
 }
 
-/*Links inside the dropdown*/
 .dropdown-content a {
     color: black;
     padding: 12px 16px;
@@ -100,8 +109,37 @@ body {
     display: block;
 }
 
-/*Change color of dropdown links on hover*/
-.destination_dropdown a:hover {background-color: #f1f1f1}
+.destination_dropdown a:hover {
+    background-color: #f1f1f1;
+}
+
+.show {
+    display: block;
+}
+
+.generate_button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 30px;
+    padding-bottom: 20px;
+}
+
+.generate_button button {
+    padding: 15px 30px;
+    font-size: 18px;
+    background-color: #60afce;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.generate_button button:hover {
+    background-color: #4a92b0;
+}
+
 
 /*Show the dropdown menu onclick (going to need a func for this*/
 .show {display:block;}
