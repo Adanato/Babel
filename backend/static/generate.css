@@ -42,6 +42,7 @@ h2 {
    flex: 1;
 }
 
+/* Styling for intinerary list header and icons */
 .header-image-container {
     display: flex;
     align-items: center; /* Center the image and header vertically */
@@ -54,4 +55,30 @@ h2 {
 .header-image-container h2 {
     margin: 0; /* Remove default margin to align better */
 }
+
+/* styling for main header and home icone */
+.mainHeader-image-container {
+    display: flex;
+    justify-content: space-between; /* Space between the text and image */
+    align-items: center; /* Center the content vertically */
+    position: relative; /* Position the image relative to the text */
+}
+
+.header-text-container {
+    text-align: center; /* Center the text within the container */
+    flex-grow: 1; /* Allow the text to grow to fill the space */
+}
+
+.header-text-container h1,
+.header-text-container h3 {
+    margin: 0; /* Remove default margin to align better */
+}
+
+.mainHeader-image-container img {
+    margin-left: auto; /* Ensure the image is pushed to the right */
+    position: absolute; /* Position the image absolutely */
+    right: 0; /* Align the image to the right */
+    top: -5px; /* Align the image to the top */
+}
+
 

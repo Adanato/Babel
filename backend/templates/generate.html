@@ -9,9 +9,15 @@
 <body>
     <div id="selected-photo-container"></div>
 
-    <h1 id="place_name">Itinerary for [place name]</h1>
-    <h3 id="duration-of-trip">Duration of trip: [# of days]</h3>
-
+    <div class="mainHeader-image-container">
+        <div class="header-text-container">
+            <h1 id="place_name">Itinerary for [place name]</h1>
+            <h3 id="duration-of-trip">Duration of trip: [# of days]</h3>
+        </div>
+        <a href="/">
+            <img src="{{ url_for('static', filename='icons/home_icon.png') }}" alt="Home Icon" width="50" height="50">
+        </a>
+    </div>
     <!-- container to make the intinerary list horizontal -->
      <div class="intinerary-container">
         <div class="accommodation-container">
