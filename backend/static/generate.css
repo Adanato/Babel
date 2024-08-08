@@ -1,3 +1,57 @@
+#duration-of-trip {
+    text-align: center;
+}
 h1 {
     text-align: center;
 }
+h2 {
+    font-family: 'Arial', sans-serif; /* Choose a font family */
+     /* Adjust the size as needed */
+    color: #333; /* Set the text color */
+    text-align: left; /* Center align the text */
+    background-color: #FBEAEB; /* Light background color */
+    padding: 10px 20px; /* Add padding for spacing */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    margin-top: 20px; /* Space above the header */
+    margin-bottom: 20px; /* Space below the header */
+    display: flex;
+}
+
+.intinerary-container{
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px;
+}
+
+.accommodation-container,
+.activities-container,
+.dining-container {
+    font-family: 'Arial', sans-serif; /* Choose a font family */
+    /* Adjust the size as needed */
+   color: white; /* Set the text color */
+   text-align: left; /* Center align the text */
+   background-color: #2F3C7E; /* Light background color */
+   padding: 10px 20px; /* Add padding for spacing */
+   border-radius: 8px; /* Rounded corners */
+   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+   margin-top: 20px; /* Space above the header */
+   margin-bottom: 20px; /* Space below the header */
+   display: inline-block;
+   flex: 1;
+}
+
+.header-image-container {
+    display: flex;
+    align-items: center; /* Center the image and header vertically */
+}
+
+.header-image-container img {
+    margin-left: auto; /* Space between image and header */
+}
+
+.header-image-container h2 {
+    margin: 0; /* Remove default margin to align better */
+}
+

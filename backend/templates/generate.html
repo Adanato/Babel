@@ -3,24 +3,50 @@
 <head>
     <title>Magic Travels</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='generate.css') }}">
+    <script type="module" src="{{ url_for('static', filename='getsPhotos.js') }}" defer></script>
+
 </head>
 <body>
-    <h1 id="place-name">Itinerary for [place name]</h1>
-    <h2 id="duration-of-trip">Duration of trip: [# of days]</h2>
-    <h2>Accommodation</h2>
-    <div id="accommodation">
-        <p>Accommodation details (address and area description)</p>
-    </div>
-    <h2>Activities</h2>
-    <div id="activities">
-        <p>List of activities. 2 for each day</p>
-        <p>Each activity includes title of activity and small description</p>
-    </div>
-    <h2>Dining Options</h2>
-    <div id="dining-options">
-        <p>List of dining options. 2 for each day</p>
-        <p>Each dining option includes name of restaurant and description of the place</p>
-    </div>
+    <div id="selected-photo-container"></div>
+
+    <h1 id="place_name">Itinerary for [place name]</h1>
+    <h3 id="duration-of-trip">Duration of trip: [# of days]</h3>
+
+    <!-- container to make the intinerary list horizontal -->
+     <div class="intinerary-container">
+        <div class="accommodation-container">
+            <!-- outputting images not working. Can't figure out right path -->
+            <div class="header-image-container">
+                 <h2>Accommodation</h2>
+                 <img src="{{ url_for('static', filename='icons/accommodations_icon.png') }}" alt="Accommodation Icon" width="50" height="50">
+            </div>
+            <div id="accommodation">
+                <p>Accommodation details (address and area description)</p>
+            </div>
+        </div>
+        <div class="activities-container">
+            <div class="header-image-container">
+                <h2>Activities</h2>
+                <img src="{{ url_for('static', filename='icons/activities3_icon.png') }}" alt="Activities Icon" width="50" height="50">
+            </div>
+            <div id="activities">
+                <p>List of activities. 2 for each day</p>
+                <p>Each activity includes title of activity and small description</p>
+            </div>
+        </div>
+       <div class="dining-container">
+            <div class="header-image-container">
+                <h2>Dining Options</h2>
+                <img src="{{ url_for('static', filename='icons/dining_icon.png') }}" alt="Dining Icon" width="50" height="50">
+            </div>
+            <div id="dining-options">
+                <p>List of dining options. 2 for each day</p>
+                <p>Each dining option includes name of restaurant and description of the place</p>
+            </div>
+       </div>
+     </div>
+
+
     <div id="photo-container">
         <script type="module" src="{{ url_for('static', filename='generate.js') }}"></script>
     </div>

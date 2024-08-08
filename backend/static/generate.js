@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const params = getUrlParams();
     const destination = params.destination || "example_destination";  // Use URL parameter or default
     const days = params.days || 7;  // Use URL parameter or default
-    document.getElementById('place-name').textContent = destination;
+    document.getElementById('place_name').textContent = destination; //CHANGE
     document.getElementById('duration-of-trip').textContent = `Duration of trip: ${days} days`;
 
     fetch(`/api/generate?destination=${destination}&days=${days}`)
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <h4>Day ${activityDay.day}</h4>
                     ${activityDay.activities.map((activity, activityIndex) => `
                         <div>
-                            <h5>Activity ${activityIndex + 1}</h5>
+                            <!-- <h5>Activity ${activityIndex + 1}</h5> -->
                             <p><strong>${activity.title}</strong>: ${activity.description}</p>
                         </div>
                     `).join('')}
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <h4>Day ${diningDay.day}</h4>
                     ${diningDay.dining.map((dining, diningIndex) => `
                         <div>
-                            <h5>Option ${diningIndex + 1}</h5>
+                           <!-- <h5>Option ${diningIndex + 1}</h5> -->
                             <p><strong>${dining.name}</strong>: ${dining.description}</p>
                         </div>
                     `).join('')}

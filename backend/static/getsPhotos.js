@@ -51,7 +51,7 @@ for(let i = 0; i < 3; i++) {
     function displayPhoto(photoUrl, placeName) {
         const photocontainer = document.getElementsByClassName("photo-container")[i];
         const link = document.createElement("a");
-        link.href = `/generate?destination=${encodeURIComponent(placeName)}&days=2`; // Adjust the duration parameter as needed
+        link.href = `/generate?destination=${encodeURIComponent(placeName)}&days=3`; // Adjust the duration parameter as needed
         const img = document.createElement("img");
         img.src = photoUrl;
         img.alt = placeName;

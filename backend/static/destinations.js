@@ -48,7 +48,8 @@ export const vacationDestinations = [
     "Budapest, Hungary",
     "Kyoto, Japan",
     "Reykjavik, Iceland",
-    "Hanoi, Vietnam"
+    "Hanoi, Vietnam",
+    "Malverne, New York, USA",
 ];
 
 //Function to create option elements for the select element
