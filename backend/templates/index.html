@@ -2,26 +2,20 @@
 <html>
 <head>
     <title>Magic Travels</title>
-    <!-- <link rel="stylesheet" type="text/css" href="templates/styles.css"> -->
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet"> <!-- Google Fonts link -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <script type="module" src="{{ url_for('static', filename='getsPhotos.js') }}" defer></script>
-    <script type="module" src="{{ url_for('static', filename='destinations.js') }}" defer></script>
-
-
+    <script type="module" src="{{ url_for('static', filename='index.js') }}" defer></script>
 </head>
 <body>
     <h1>Magic Travels</h1>
-
     <div class="container">
         <div class="destination_dropdown">
             <span class="text-next-to-button"> Choose a Destination: </span>
             <select id="destination_select">
-                <!-- Options wll be populated by Javascript-->
+                <!-- Options will be populated by Javascript-->
             </select>
-            <!-- <button onclick="myFunction()" class="dropbtn">Destinations</button> -->
             <div id="my_dest_dropdown" class="dropdown-content">
-                <!-- This is where we'd have to connect it to the API and get cities from it -->
                 <a href="#">Paris</a>
                 <a href="#">London</a>
                 <a href="#">New York</a>
@@ -40,32 +34,37 @@
         </div>
     </div>
     <div class="generate_button">
-        <!-- After clicking the generate button, it should take user to the generate -->
-        <!-- page showing the results based on their paramters (City and Duration)  -->
         <button onclick="generateItinerary()">Generate Itinerary</button>
     </div>
     <div class="suggestions_container">
-        <h2>Recommanded Destinations</h2>
-        <!-- <h3>Duration dropdown here</h3> -->
-            <div class="buttons_row">
-                <!-- Suggestions should change everytime the page is refreshed -->
-                <div class="suggest_button">
-                    <!-- <img src="./photos/barcelona.jpg" alt="Barcelona" style="width:220px;height:150px"; > -->
-                    <div class="photo-container"></div>
-                    <h2 class="place-name"></h2>
-                </div>
-                <div class="suggest_button">
-                    <!-- <img src="./photos/london.jpg" alt="Paris" style="width:220px;height:150px"; > -->
-                    <div class="photo-container"></div>
-                    <h2 class="place-name"></h2>
-
-                </div>
-                <div class="suggest_button">
-                    <div class="photo-container"></div>
-                    <h2 class="place-name"></h2>
- 
-                </div>
+        <h2>Recommended Destinations</h2>
+        <div class="buttons_row">
+            <div class="suggest_button">
+                <div class="photo-container"></div>
+                <h2 class="place-name"></h2>
             </div>
+            <div class="suggest_button">
+                <div class="photo-container"></div>
+                <h2 class="place-name"></h2>
+            </div>
+            <div class="suggest_button">
+                <div class="photo-container"></div>
+                <h2 class="place-name"></h2>
+            </div>
+        </div>
     </div>
 </body>
 </html>
+<script type="text/javascript">
+
+    // Function to generate itinerary link and navigate
+    function generateItinerary() {
+        const destinationSelect = document.getElementById('destination_select');
+        const durationSelect = document.getElementById('duration_select');
+        const destination = destinationSelect.value;
+        const days = durationSelect.value;
+
+        // Navigate to the generate page with the selected parameters
+        window.location.href = `/generate?destination=${encodeURIComponent(destination)}&days=${encodeURIComponent(days)}`;
+    }
+</script>
